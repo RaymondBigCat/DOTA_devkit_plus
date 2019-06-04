@@ -282,7 +282,10 @@ class splitbase():
         if imglist == None:
             imagelist = util.GetFileFromThisRootDir(self.imagepath)
             imglist = [util.custombasename(x) for x in imagelist if (util.custombasename(x) != 'Thumbs')]
-        for name in imglist:
+        num_imglist = len(imglist)
+        for index, name in enumerate(imglist):
+            if index % (num_imglist//10) == 1:
+                print("already finished: "+str(index//(num_imglist//10)*10)+" %")
             self.SplitSingle(name, rate, self.ext)
 
 if __name__ == '__main__':

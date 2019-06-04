@@ -185,8 +185,8 @@ def txt2xml(raw_folder, img_shape, class_list, parseMode='parse_dota_rec'):
         save_path = os.path.join(save_folder,img_id+".xml")
         #img_shape = img.shape
         save_to_xml(save_path,img_id+'.png',img_shape, tmp_label, class_list, parseMode = 'parse_dota_rec')
-        if index % (img_num/10) == 0:
-            print(str(index)+' annotation files has finished!')
+        if index % (img_num//10) == 1:
+            print("already finished: "+str(index//(img_num//10)*10)+" %")
 
 def generate_txt_imgids(origin_folder, dataset_name = 'train'):
     """
